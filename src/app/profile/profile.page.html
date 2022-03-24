@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-title>{{profile.name}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button slot="icon-only" routerLink="/tabs/profile/edit">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-padding" class="ion-text-center">
+        <ion-list lines="none">
+          <ion-list-header class="ion-no-padding">
+            <ion-label>Start</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{profile.startWeight}}kg</ion-label
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{(profile.startWeight/(profile.height*profile.height)).toFixed(2)}}</ion-label
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{profile.startDate | date:'d/M/yy'}}</ion-label
+            >
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col class="ion-padding" class="ion-text-center">
+        <ion-list lines="none">
+          <ion-list-header class="ion-no-padding">
+            <ion-label>Current</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{profile.currentWeight}}kg</ion-label
+            >
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-list lines="none">
+          <ion-list-header class="ion-no-padding">
+            <ion-label>Target</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{profile.targetWeight}}kg</ion-label
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{(profile.targetWeight/(profile.height*profile.height)).toFixed(2)}}</ion-label
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{profile.targetDate | date:'d/M/yy'}}</ion-label
+            >
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-list lines="none">
+          <ion-list-header class="ion-no-padding">
+            <ion-label>You Lost</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{(profile.startWeight -
+              profile.currentWeight).toFixed(2)}}kg</ion-label
+            >
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col class="ion-text-center">
+        <ion-list lines="none">
+          <ion-list-header class="ion-no-padding">
+            <ion-label>Remaining</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label class="ion-text-center"
+              >{{(profile.currentWeight -
+              profile.targetWeight).toFixed(2)}}kg</ion-label
+            >
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none"> Progress {{((profile.startWeight-profile.currentWeight)/(profile.startWeight - profile.targetWeight)*100).toFixed(2)}}% </ion-item>
+       
+        <ion-progress-bar
+          color="primary"
+          value="{{(profile.startWeight-profile.currentWeight)/(profile.startWeight - profile.targetWeight)}}"
+        >
+        </ion-progress-bar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block"> Enter weight </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

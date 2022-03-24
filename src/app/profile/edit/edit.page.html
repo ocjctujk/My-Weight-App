@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button slot="icon-only" (click)="onUpdateProfile(form)">
+        <ion-icon name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">Name</ion-label>
+              <ion-input ngModel name="name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Start weight</ion-label>
+              <ion-input type="number" ngModel name="startWeight"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Current weight</ion-label>
+              <ion-input type="number" ngModel name="currentWeight"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Target weight</ion-label>
+              <ion-input type="number" ngModel name="targetWeight"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Height in m</ion-label>
+              <ion-input type="number" ngModel name="height"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Start Date</ion-label>
+              <input type="date" ngModel name="startDate" />
+            </ion-item>
+            <ion-item>
+              <ion-label>Target Date</ion-label>
+              <input type="date" ngModel name="targetDate" />
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
